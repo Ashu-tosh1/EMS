@@ -1,5 +1,7 @@
 import './App.css'
 import Login from './components/Auth/login'
+import AdminDashboard from './components/dashboard/AdminDashboard'
+import EmployeeDashboard from './components/dashboard/EmployeeDashboard'
 
 function App() {
 
@@ -7,8 +9,9 @@ function App() {
   return (
    
    <>
-   <Login/>
-
+   {/* <Login/> */}
+   {/* <EmployeeDashboard/> */}
+    {<AdminDashboard/>}
    </>
   )
 }
