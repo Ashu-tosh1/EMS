@@ -1,12 +1,19 @@
 import React from 'react'
 import Header from '../other/Header'
+import Createtask from '../other/Createtask';
+import Alltasks from '../other/Alltasks';
 
 const AdminDashboard = () => {
-  return (
-    <div className='text-red-50'>
-      <Header/>
-    </div>
-  )
+    return (
+<div className='p-10'>
+    <Header/>
+    <Createtask/>
+    <Alltasks/>
+</div>
+
+     
+      );
+    
 }
 
 export default AdminDashboard

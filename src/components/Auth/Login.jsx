@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Login = () => {
+const Login = ({handleLogin}) => {
   // State management for email and password
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -8,6 +8,9 @@ const Login = () => {
 
   const submitHandler = (e) => {
     e.preventDefault(); // Prevent page reload
+    handleLogin(email,password)
+    setEmail("")
+    setPassword("")
 
     if (!email || !password) {
       setError('Both fields are required.');
@@ -25,6 +28,7 @@ const Login = () => {
         <form 
         onSubmit={(e)=>{
             submitHandler(e)
+            
         }}
         className='flex flex-col items-center justify-center text-white'
         >
