@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
 const Login = ({handleLogin}) => {
+
   // State management for email and password
   const [email, setEmail] = useState('');
+
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  
 
   const submitHandler = (e) => {
     e.preventDefault(); // Prevent page reload
@@ -17,7 +19,7 @@ const Login = ({handleLogin}) => {
       return;
     }
 
-    setError(''); // Clear errors
+    
     console.log('Form submitted with:', { email, password });
     
   };
