@@ -6,7 +6,7 @@ const EmployeeHeader = ({ changeUser, username }) => {
     localStorage.setItem('loggedInUser', '');
     changeUser('');
   };
-
+  console.log(username)
   return (
     <motion.div
       initial={{ y: -20, opacity: 0 }}
@@ -17,7 +17,7 @@ const EmployeeHeader = ({ changeUser, username }) => {
       <div>
         <h1 className="text-xl font-medium">Welcome,</h1>
         <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
-          {username} 👋
+          {username.firstName} 👋
         </h2>
       </div>
       <motion.button

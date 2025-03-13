@@ -5,28 +5,33 @@ const AcceptTask = ({ data, onComplete, onFail }) => {
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
-      className="flex-shrink-0 h-full w-[300px] p-5 bg-gray-800 rounded-xl shadow-lg"
+      className="flex-shrink-0 h-full w-[300px] p-5 bg-yellow-500  rounded-xl shadow-lg flex flex-col justify-between"
     >
-      <div className="flex justify-between items-center">
-        <span className="bg-blue-600 text-sm px-3 py-1 rounded text-white">
-          {data.category}
-        </span>
-        <span className="text-sm text-gray-400">{data.taskDate}</span>
+      {/* Task Header */}
+      <div>
+        <div className="flex justify-between items-center">
+          <span className="bg-white font-medium   text-sm px-3 py-1 rounded text-yellow-700">
+            {data.category}
+          </span>
+          <span className="text-sm text-white">{data.taskDate}</span>
+        </div>
+        <h2 className="mt-4 text-2xl font-semibold text-white">{data.taskTitle}</h2>
+        <p className="text-sm mt-2 text-white">{data.taskDescription}</p>
       </div>
-      <h2 className="mt-5 text-2xl font-semibold text-white">{data.taskTitle}</h2>
-      <p className="text-sm mt-2 text-gray-300">{data.taskDescription}</p>
-      <div className="flex justify-between mt-6">
+
+      {/* Buttons - Aligned Properly */}
+      <div className="flex gap-4 mt-6">
         <button
           onClick={() => onComplete(data)}
-          className="bg-green-500 hover:bg-green-600 rounded font-medium py-1 px-2 text-xs text-white transition"
+          className="w-1/2 bg-green-500 hover:bg-green-600 rounded font-medium py-2 px-4 text-sm text-white transition"
         >
-          Mark as Completed
+           Complete
         </button>
         <button
           onClick={() => onFail(data)}
-          className="bg-red-500 hover:bg-red-600 rounded font-medium py-1 px-2 text-xs text-white transition"
+          className="w-1/2 bg-red-500 hover:bg-red-600 rounded font-medium py-2 px-4 text-sm text-white transition"
         >
-          Mark as Failed
+           Fail
         </button>
       </div>
     </motion.div>

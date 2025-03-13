@@ -1,8 +1,7 @@
-
 const employees = [
   {
       "id": 1,
-      "firstName": "Arjun",
+      "firstName": "Apporv",
       "email": "e@e.com",
       "password": "123",
       "taskCounts": {
@@ -46,7 +45,7 @@ const employees = [
   },
   {
       "id": 2,
-      "firstName": "Sneha",
+      "firstName": "Vipul",
       "email": "employee2@example.com",
       "password": "123",
       "taskCounts": {
@@ -80,7 +79,7 @@ const employees = [
   },
   {
       "id": 3,
-      "firstName": "Ravi",
+      "firstName": "Kartikesh",
       "email": "employee3@example.com",
       "password": "123",
       "taskCounts": {
@@ -124,7 +123,7 @@ const employees = [
   },
   {
       "id": 4,
-      "firstName": "Priya",
+      "firstName": "Saurav",
       "email": "employee4@example.com",
       "password": "123",
       "taskCounts": {
@@ -158,7 +157,7 @@ const employees = [
   },
   {
       "id": 5,
-      "firstName": "Karan",
+      "firstName": "Parthib",
       "email": "employee5@example.com",
       "password": "123",
       "taskCounts": {
@@ -209,13 +208,37 @@ const admin = [{
   "password": "123"
 }];
 
-export const setLocalStorage = ()=>{
-  localStorage.setItem('employees',JSON.stringify(employees))
-  localStorage.setItem('admin',JSON.stringify(admin))
-}
-export const getLocalStorage = ()=>{
-  const employees = JSON.parse(localStorage.getItem('employees'))
-  const admin = JSON.parse(localStorage.getItem('admin'))
-
-  return {employees,admin}
-}
+export const setLocalStorage = (data) => {
+    if (!data) return;
+    localStorage.setItem("employees", JSON.stringify(data.employees || []));
+    localStorage.setItem("admin", JSON.stringify(data.admin || {}));
+  };
+  
+  //  Retrieve from Local Storage
+  export const getLocalStorage = () => {
+    let employees = JSON.parse(localStorage.getItem("employees"));
+    let admin = JSON.parse(localStorage.getItem("admin"));
+  
+    // If local storage is empty, initialize with default data
+    if (!employees || employees.length === 0) {
+      employees = [...employees]; // Clone to avoid direct mutations
+      localStorage.setItem("employees", JSON.stringify(employees));
+    }
+  
+    if (!admin || Object.keys(admin).length === 0) {
+      admin = { ...admin }; // Clone admin
+      localStorage.setItem("admin", JSON.stringify(admin));
+    }
+  
+    return { employees, admin };
+  };
+  
+  //  Initialize Local Storage if Empty
+  export const initializeLocalStorage = () => {
+    if (!localStorage.getItem("employees") || !localStorage.getItem("admin")) {
+      setLocalStorage({ employees, admin });
+    }
+  };
+  
+  //  Call this function once at the start of your app
+  initializeLocalStorage();

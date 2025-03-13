@@ -3,10 +3,11 @@ import Login from './components/Auth/Login'
 import { AuthContext } from './context/AuthProvider'
 import AdminDashboard from './components/dashboard/AdminDashboard'
 import EmployeeDashboard from './components/dashboard/EmployeeDashboard'
+import { initializeLocalStorage } from './util/Localstorage'
 
 
 const App = () => {
-
+  // initializeLocalStorage()
   const [user, setUser] = useState(null)
   const [loggedInUserData, setLoggedInUserData] = useState(null)
   const [userData,SetUserData] = useContext(AuthContext)
@@ -28,7 +29,7 @@ const App = () => {
       setUser('admin')
       localStorage.setItem('loggedInUser', JSON.stringify({ role: 'admin' }))
     } else if (userData) {
-      const employee = userData.find((e) => email == e.email && e.password == password)
+      const employee = userData.employees.find((e) => email == e.email && e.password == password)
       if (employee) {
         setUser('employee')
         setLoggedInUserData(employee)

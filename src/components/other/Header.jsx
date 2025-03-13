@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { motion } from 'framer-motion';
-import { AuthContext } from '../../context/AuthProvider';
+// import { AuthContext } from '../../context/AuthProvider';
 
 const Header = (props) => {
   const logOutUser = () => {

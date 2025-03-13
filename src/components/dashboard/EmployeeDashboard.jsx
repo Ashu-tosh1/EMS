@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 import Taskno from '../other/Taskno';
 import Tasklist from '../Tasklist/Tasklist';
 import EmployeeHeader from '../other/EmployeeHeader';
-// import EmployeeHeader from '../other/EmployeeHeader';
+import { AuthContext } from '../../context/AuthProvider';
 
 const EmployeeDashboard = (props) => {
-  // Store user data in state to allow updates
-  const [userData, setUserData] = useState(props.data);
+  // Get userData and setUserData from AuthContext
+  const [userData, setUserData] = useContext(AuthContext);
 
   return (
     <motion.div 
@@ -19,9 +19,9 @@ const EmployeeDashboard = (props) => {
       {/* Header with greeting and logout button */}
       <EmployeeHeader changeUser={props.changeUser} username={userData.firstName || "Employee"} />
       
-      {/* Task Summary and Task List */}
+      {/* Pass updated userData to Taskno and Tasklist */}
       <div className="mt-8 space-y-8">
-        <Taskno data={userData} />
+        <Taskno data={userData} /> 
         <Tasklist data={userData} setUserData={setUserData} />
       </div>
     </motion.div>

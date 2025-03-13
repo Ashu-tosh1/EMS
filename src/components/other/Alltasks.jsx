@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const AllTasks = () => {
   const [userData, setUserData] = useContext(AuthContext);
-
+console.log(userData)
   return (
     <div className="p-6 my-10 bg-[#121212] rounded-lg shadow-lg border border-gray-800">
       {/* Table Header */}
@@ -22,7 +22,7 @@ const AllTasks = () => {
       
       {/* Table Rows */}
       <div>
-        {userData.map((elem, idx) => (
+        {userData.employees.map((elem, idx) => (
           <motion.div 
             key={idx}
             initial={{ opacity: 0, scale: 0.9 }}

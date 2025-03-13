@@ -13,9 +13,9 @@ const CreateTask = () => {
   // We'll create the new task object locally before updating the state.
   const submitHandler = (e) => {
     e.preventDefault();
-    
-    // Build new task object
-    const task = {
+  
+    // Create the new task object
+    const newTask = {
       taskTitle,
       taskDescription,
       taskDate,
@@ -25,26 +25,37 @@ const CreateTask = () => {
       failed: false,
       completed: false,
     };
-
-    // Update tasks for the selected employee
-    const data = [...userData];
-    data.forEach((elem) => {
-      if (assignTo === elem.firstName) {
-        elem.tasks.push(task);
-        elem.taskCounts.newTask += 1;
-      }
+  
+    setUserData((prevData) => {
+      const updatedEmployees = prevData.employees.map((emp) => {
+        if (emp.firstName === assignTo) {
+          return {
+            ...emp,
+            tasks: emp.tasks ? [...emp.tasks, newTask] : [newTask], // Ensure tasks exist
+            taskCounts: {
+              ...emp.taskCounts,
+              newTask: (emp.taskCounts.newTask || 0) + 1, // Update task count
+            },
+          };
+        }
+        return emp;
+      });
+  
+      const updatedData = { ...prevData, employees: updatedEmployees };
+      localStorage.setItem("userData", JSON.stringify(updatedData)); // Ensure local storage is updated
+      return updatedData;
     });
-    setUserData(data);
-
-    // Clear form fields
+  
+    // Reset form fields
     setTaskTitle('');
+    setTaskDescription('');
+    setTaskDate('');
     setCategory('');
     setAssignTo('');
-    setTaskDate('');
-    setTaskDescription('');
   };
+  
 
-  const employeeList = ['Apoorv', 'Saurav', 'Vipul', 'Kartikesh', 'Parthib'];
+  const employeeList = ['Apporv', 'Saurav', 'Vipul', 'Kartikesh', 'Parthib'];
 
   return (
     <motion.div
