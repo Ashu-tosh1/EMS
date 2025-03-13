@@ -1,8 +1,10 @@
 # React + Vite
+it is not responsive,so better to open it in Laptop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+To use Admin features 
+email-id : admin@me.com
+password:123
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To login Employee-1
+email-id: e@e.com
+password:123
